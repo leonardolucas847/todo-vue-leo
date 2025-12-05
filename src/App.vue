@@ -20,7 +20,8 @@ function cadastraTarefa(){
   estado.tarefas.push({titulo: estado.tarefaAInserir,
     finalizada: false,
   })
-  estado.tarefaAInserir= '';
+  estado.tarefaAInserir = '';
+
 };
 const  getTarefapendente = () => {
   return estado.tarefas.filter(tarefa=> tarefa.finalizada === false)
@@ -54,7 +55,7 @@ const getTarefasFiltradas = () => {
     <form @submit.prevent="cadastraTarefa">
       <div class="row">
         <div class="col">
-          <input  @keyup="evento => estado.tarefaAInserir = evento.target.value" type="text" placeholder="Digite aqui a descrição da tarefa" class="form-control">
+          <input :value="estado.tarefaAInserir" required  @change="evento => estado.tarefaAInserir = evento.target.value" type="text" placeholder="Digite aqui a descrição da tarefa" class="form-control">
         </div>
         <div class="col-md-2">
           <button type="submit" class="btn btn-primary">Cadastrar</button>
